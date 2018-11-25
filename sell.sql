@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Aaryn
+Source Server         : localhost
 Source Server Version : 50528
 Source Host           : localhost:3306
 Source Database       : sell
@@ -10,10 +10,53 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-11-23 18:04:28
+Date: 2018-11-25 22:41:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for order_detail
+-- ----------------------------
+DROP TABLE IF EXISTS `order_detail`;
+CREATE TABLE `order_detail` (
+  `detail_id` varchar(255) NOT NULL,
+  `order_id` varchar(255) NOT NULL,
+  `product_id` bigint(20) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_price` decimal(10,2) NOT NULL,
+  `product_quantity` int(10) NOT NULL,
+  `product_icon` varchar(255) NOT NULL,
+  PRIMARY KEY (`detail_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of order_detail
+-- ----------------------------
+INSERT INTO `order_detail` VALUES ('123456', '123456', '1', '皮蛋粥', '8.00', '2', '');
+
+-- ----------------------------
+-- Table structure for order_master
+-- ----------------------------
+DROP TABLE IF EXISTS `order_master`;
+CREATE TABLE `order_master` (
+  `order_id` varchar(255) NOT NULL,
+  `buyer_name` varchar(30) NOT NULL,
+  `buyer_phone` varchar(30) NOT NULL,
+  `buyer_address` varchar(255) NOT NULL,
+  `buyer_openid` varchar(255) NOT NULL,
+  `order_amount` decimal(10,2) NOT NULL,
+  `order_status` int(10) NOT NULL DEFAULT '0',
+  `pay_status` int(10) NOT NULL COMMENT '0',
+  `create_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL,
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of order_master
+-- ----------------------------
+INSERT INTO `order_master` VALUES ('123456', 'Aaryn', '17788999988', '浙江省金华市', 'adsd15453db11', '10.00', '0', '0', '2018-11-25 16:46:07', '2018-11-25 16:46:07');
 
 -- ----------------------------
 -- Table structure for product_category
